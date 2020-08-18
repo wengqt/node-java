@@ -1,55 +1,4 @@
 {
-  'target_defaults': {
-    'default_configuration': 'Release',
-    'msvs_settings': {
-      'VCCLCompilerTool': {
-        'ExceptionHandling': 1,
-      },
-    },
-    'configurations': {
-      'Debug': {
-        'defines!': [
-          'NDEBUG',
-        ],
-        'defines': [
-          'DEBUG',
-          '_DEBUG',
-        ],
-        'cflags': [
-          '-O0',
-        ],
-        'xcode_settings': {
-          'MACOSX_DEPLOYMENT_TARGET': '10.7',
-          'GCC_OPTIMIZATION_LEVEL': '0',
-          'GCC_GENERATE_DEBUGGING_SYMBOLS': 'YES',
-        },
-        'msvs_settings': {
-          'VCLinkerTool': {
-            'GenerateDebugInformation': 'true',
-          },
-        },
-      },
-      'Release': {
-        'defines!': [
-          'DEBUG',
-          '_DEBUG',
-        ],
-        'defines': [
-          'NDEBUG',
-        ],
-        'cflags': [
-          '-O3',
-        ],
-        'xcode_settings': {
-          'MACOSX_DEPLOYMENT_TARGET': '10.7',
-          'GCC_OPTIMIZATION_LEVEL': '3',
-          'GCC_GENERATE_DEBUGGING_SYMBOLS': 'NO',
-          'DEAD_CODE_STRIPPING': 'YES',
-          'GCC_INLINES_ARE_PRIVATE_EXTERN': 'YES',
-        },
-      },
-    },
-  },
   'variables': {
     'arch%': 'amd64', # linux JVM architecture. See $(JAVA_HOME)/jre/lib/<@(arch)/server/
     'uname_m': '',
@@ -92,15 +41,7 @@
         '<(javahome)/include',
         "<!(node -e \"require('nan')\")",
       ],
-      'cflags': [
-        '-std=c++11',
-      ],
-      'xcode_settings': {
-        'OTHER_CPLUSPLUSFLAGS': [
-          '-std=c++11',
-          '-stdlib=libc++',
-        ],
-      },
+      'cflags': ['-O3'],
       'conditions': [
         ['OS=="win"',
           {
@@ -171,7 +112,12 @@
                   'include_dirs': [
                     '<(javahome)/include',
                     '<(javahome)/include/darwin'
-                  ]
+                  ],
+                  'libraries': [
+                    '-L<(javalibdir)',
+                    '-Wl,-rpath,<(javalibdir)',
+                    '-ljli'
+                  ],
                 },
               ],
               ['javaver=="System"',
