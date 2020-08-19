@@ -47,7 +47,7 @@ main () {
     target_arch=`uname -m`
     if [[ -d ${jre_dir}/${target_arch}/classic ]]; then lib_dir="${jre_dir}"/${target_arch}/classic; else lib_dir="${jre_dir}"/${target_arch}/server; fi
   elif [[ "${os}" == "mac" ]]; then
-    lib_dir="${jre_dir}/jli"
+    if [[ -f ${jre_dir}/jli/libjli.dylib ]]; then lib_dir="${jre_dir}"/jli; else lib_dir="${jre_dir}"; fi
   else
     local arch
     if [[ "${target_arch}" =~ (32|386) ]]; then
