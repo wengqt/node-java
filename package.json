@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "async": "2.6.1",
-    "find-java-home": "1.1.0",
+    "find-java-home": "^1.1.0",
     "glob": "7.1.6",
     "lodash": "4.17.19",
     "nan": "2.14.1"
