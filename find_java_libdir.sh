@@ -67,7 +67,7 @@ main () {
   if [[ -z "${lib_dir}" ]]; then
     error "Can't find lib dir for ${os} ${target_arch}, java home: ${java_home}"
   fi
-  echo "${lib_dir}"
+  echo "122333333333333 ${lib_dir}"
 }
 
 main "$@"
