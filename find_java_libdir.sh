@@ -40,7 +40,7 @@ main () {
   elif [[ "${os}" == "linux" && "${target_arch}" == "ia32" ]]; then
     if [[ -d ${jre_dir}/i386/classic ]]; then lib_dir="${jre_dir}"/i386/classic; else lib_dir="${jre_dir}"/i386/server; fi
   elif [[ "${os}" == "linux" && "${target_arch}" == "x64" ]]; then
-    if [[ -d ${jre_dir}/amd64/classic ]]; then lib_dir="${jre_dir}"/amd64/classic; else lib_dir="${jre_dir}"/amd64/server; fi
+    if [[ -d ${jre_dir}/amd64/classic ]]; then lib_dir="${jre_dir}"/amd64/classic; else lib_dir="${jre_dir}"; fi
   elif [[ "${os}" == "linux" ]] && [[ "${target_arch}" == "s390x" || "${target_arch}" == "s390" ]]; then
     if [[ -d ${jre_dir}/s390x/classic ]]; then lib_dir="${jre_dir}"/s390x/classic; else lib_dir="${jre_dir}"/s390/classic; fi
   elif [[ "${os}" == "linux" ]] && [[ "${target_arch}" == "ppc64" || "${target_arch}" == "ppc" ]]; then
